@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Image Restoration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js library -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Real-Time Image Restoration Dashboard</h1>
+
+        <div class="mode-toggle">
+            <button id="autoModeBtn">Auto Mode</button>
+            <button id="manualModeBtn">Manual Mode</button>
+        </div>
+
+        <div class="image-container">
+            <div>
+                <h2>Input Image</h2>
+                <img id="original_image" src="" alt="Original Image">
+            </div>
+            <div>
+                <h2>Restored Image</h2>
+                <img id="restored_image" src="" alt="Restored Image">
+            </div>
+            <div>
+                <h2>Highlighted Image</h2>
+                <img id="highlighted_image" src="" alt="Highlighted Image">
+            </div>
+        </div>
+
+        <div class="metrics">
+            <h3>Metrics</h3>
+            <p>PSNR: <span id="psnr"></span></p>
+            <p>SSIM: <span id="ssim"></span></p>
+        </div>
+
+        <div class="sensor-data">
+            <h3>Sensor Data</h3>
+            <p>Light: <span id="light"></span></p>
+            <p>Temperature: <span id="temperature"></span></p>
+            <p>Humidity: <span id="humidity"></span></p>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="sensorDataChart" width="300" height="300"></canvas>
+        </div>
+
+        <!-- Manual Adjustments (Hidden by Default) -->
+        <div id="manualAdjustments">
+            <label for="brightness">Brightness</label>
+            <input type="range" id="brightness" min="0" max="200" value="100">
+            <label for="contrast">Contrast</label>
+            <input type="range" id="contrast" min="0" max="200" value="100">
+            <label for="filterStrength">Filter Strength</label>
+            <input type="range" id="filterStrength" min="0" max="100" value="50">
+        </div>
+    </div>
+</body>
+</html>
